@@ -1,7 +1,4 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.List;
 
 public class DbManager {
@@ -21,8 +18,25 @@ public class DbManager {
         }
     }
 
+    public void createTableIfNotExists() {
+        String sql = """
+            CREATE TABLE IF NOT EXISTS vulnerabilities (
+                id TEXT PRIMARY KEY,
+                description TEXT NOT NULL,
+                severity TEXT,
+                ip TEXT,
+                port TEXT
+            )
+            """;
+        try (Statement stmt = conn.createStatement()) {
+            stmt.execute(sql);
+        } catch (SQLException e) {
+            System.out.println("Erreur création table : " + e.getMessage());
+        }
+    }
+
     public void saveVulnerabilities(List<Vulnerability> vulns) {
-        String sql = "INSERT INTO vulnerabilities(id, description, severity, ip, port) VALUES(?,?,?,?,?)";
+        String sql = "INSERT OR REPLACE INTO vulnerabilities(id, description, severity, ip, port) VALUES(?,?,?,?,?)";
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
             for (Vulnerability v : vulns) {
                 pstmt.setString(1, v.getId());
