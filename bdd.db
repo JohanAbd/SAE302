@@ -1,0 +1,13 @@
+CREATE TABLE "users" (
+  login TEXT NOT NULL PRIMARY KEY UNIQUE,
+  type TEXT NULL,
+  password TEXT NULL
+);
+
+CREATE TABLE "vulnerabilities" (
+  id TEXT NOT NULL PRIMARY KEY UNIQUE,
+  description TEXT NULL,
+  severity TEXT NULL,
+  ip TEXT NULL,
+  port TEXT NULL
+)
