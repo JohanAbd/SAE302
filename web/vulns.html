@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Vulnérabilités — SAE302</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="logo">SZ</div>
+      <div>
+        <h1>Vulnérabilités enregistrées</h1>
+        <p>Liste des vulnérabilités trouvées et sauvegardées dans la base SQLite</p>
+      </div>
+    </header>
+
+    <main>
+      <div class="card">
+        <div class="row">
+          <div>
+            <strong>Vulnérabilités</strong>
+            <div class="small">Récupère les dernières vulnérabilités depuis la base</div>
+          </div>
+          <div>
+            <button class="primary" onclick="location.reload()">Rafraîchir</button>
+            <button class="ghost" onclick="location.href='index.html'">Lancer un scan</button>
+          </div>
+        </div>
+
+        <div id="vulnLoader" style="display:none;margin-top:12px" class="small">Chargement…</div>
+        <div id="vulnContainer" style="margin-top:12px"></div>
+      </div>
+
+      <div style="height:12px"></div>
+      <div class="card small">
+        <strong>Astuce :</strong> clique sur <em>Rafraîchir</em> après un scan pour voir les nouvelles vulnérabilités.
+      </div>
+    </main>
+
+    <footer class="footer">SAE302 — Affichage simple des vulnérabilités</footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
