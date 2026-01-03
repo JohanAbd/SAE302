@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Scanner de vulnérabilités — SAE302</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+  <div class="logo">SZ</div>
+  <div style="flex:1">
+    <h1>Scanner vulnérabilités</h1>
+    <p>Connecté en tant que <strong>admin</strong></p>
+  </div>
+  <button class="danger" onclick="logout()">Déconnexion</button>
+</header>
+
+    <main class="card">
+      <form id="scanForm" class="form-row" autocomplete="off">
+        <input id="ip" type="text" placeholder="Ex: 192.168.1.10" required>
+        <button id="scanBtn" class="primary" type="submit">Lancer le scan</button>
+        <button type="button" onclick="location.href='vulns.html'" class="ghost">Voir vulnérabilités</button>
+      </form>
+
+      <div id="status" class="status">Tape l'IP puis clique sur <strong>Lancer le scan</strong>.</div>
+    </main>
+
+    <footer class="footer">Projet SAE302 — interface simple</footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

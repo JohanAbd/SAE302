@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Connexion - SAE302</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body style="display:flex; align-items:center; justify-content:center;">
+    <div class="card" style="width:350px;">
+        <h2>Accès Restreint</h2>
+        <form id="loginForm">
+            <input type="text" id="user" placeholder="Utilisateur" required style="width:100%; margin-bottom:10px;">
+            <input type="password" id="pass" placeholder="Mot de passe" required style="width:100%; margin-bottom:10px;">
+            <button type="submit" class="primary" style="width:100%;">Se connecter</button>
+        </form>
+        <p id="errMsg" style="color:red; font-size:12px; margin-top:10px;"></p>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').onsubmit = async (e) => {
+            e.preventDefault();
+            const body = new URLSearchParams();
+            body.append('username', document.getElementById('user').value);
+            body.append('password', document.getElementById('pass').value);
+
+            const res = await fetch('/api/login', { method: 'POST', body });
+            if(res.ok) {
+                localStorage.setItem('isLogged', 'true');
+                window.location.href = 'index.html';
+            } else {
+                document.getElementById('errMsg').innerText = "Accès refusé.";
+            }
+        };
+    </script>
+</body>
+</html>
