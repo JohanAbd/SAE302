@@ -12,7 +12,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         String targetIp = args.length >= 1 ? args[0] : "127.0.0.1";
-        String dbFile = args.length >= 2 ? args[1] : "vulnerabilities.db";
+        String dbFile = args.length >= 2 ? args[1] : "bd.db";
 
         ScannerApp scanner = new ScannerApp();
         scanner.runScan(targetIp);
